@@ -1,0 +1,226 @@
+import random
+import math
+
+def edad():
+    e = int(input("Ingresa tu edad: "))
+    print("Tu edad es:", e, "años")
+
+def suma():
+    a = float(input("Ingresa el primer número: "))
+    b = float(input("Ingresa el segundo número: "))
+    print("La suma es:", a + b)
+
+def num_aleatorio():
+    n = random.randint(1, 100)
+    while True:
+        intento = int(input("Adivina el número: "))
+        if intento == n:
+            print("¡Felicitaciones, adivinaste el número!")
+            break
+        elif intento < n:
+            print("El número es mayor.")
+        else:
+            print("El número es menor.")
+
+def contador_vocales():
+    cadena = input("Ingresa una cadena: ")
+    c = sum(1 for i in cadena.lower() if i in "aeiou")
+    print("Número de vocales:", c)
+    return c
+
+def palindromo(palabra):
+    if palabra == palabra[::-1]:
+        print("Es palíndromo")
+        return True
+    else:
+        print("No es palíndromo")
+        return False
+
+def calcular_potencia(base, exponente):
+    print("Resultado:", base ** exponente)
+
+def calcular_media(lista):
+    if len(lista) == 0:
+        print("Lista vacía")
+    else:
+        print("Media:", sum(lista) / len(lista))
+
+def invertir_cadena(cadena):
+    return cadena[::-1]
+
+def mayor_de_tres_numeros(a, b, c):
+    return max(a, b, c)
+
+def calcular_area(radio, altura):
+    return 2 * math.pi * radio * altura + 2 * math.pi * radio ** 2
+
+def buscar_palabra(cadena, palabra):
+    return palabra in cadena
+
+def promedio(*numeros):
+    if len(numeros) == 0:
+        return 0
+    return sum(numeros) / len(numeros)
+
+def multiplicar_lista(lista, numero):
+    return [i * numero for i in lista]
+
+def mayor_de_varios_numeros(*numeros):
+    if len(numeros) == 0:
+        return None
+    return max(numeros)
+
+def calcular_mediana(*numeros):
+    lista = sorted(numeros)
+    n = len(lista)
+    if n == 0:
+        return None
+    if n % 2 == 0:
+        return (lista[n//2 - 1] + lista[n//2]) / 2
+    else:
+        return lista[n//2]
+
+def contar_ocurrencias(cadena, palabra):
+    return cadena.count(palabra)
+
+def menu_nivel_1():
+    while True:
+        print("\n--- Nivel 1: Funciones sin parámetros ni retorno ---")
+        print("1. Edad")
+        print("2. Suma")
+        print("3. Número aleatorio")
+        print("4. Contador de vocales")
+        print("5. Volver al menú principal")
+        op = input("Selecciona una opción: ")
+        if op == "1":
+            edad()
+        elif op == "2":
+            suma()
+        elif op == "3":
+            num_aleatorio()
+        elif op == "4":
+            contador_vocales()
+        elif op == "5":
+            break
+        else:
+            print("Opción inválida")
+
+def menu_nivel_2():
+    while True:
+        print("\n--- Nivel 2: Funciones con parámetros, sin retorno ---")
+        print("1. Palíndromo")
+        print("2. Calcular potencia")
+        print("3. Calcular media")
+        print("4. Volver al menú principal")
+        op = input("Selecciona una opción: ")
+        if op == "1":
+            palabra = input("Ingresa la palabra: ")
+            palindromo(palabra)
+        elif op == "2":
+            base = float(input("Base: "))
+            exp = float(input("Exponente: "))
+            calcular_potencia(base, exp)
+        elif op == "3":
+            n = int(input("Cantidad de números: "))
+            lista = []
+            for i in range(n):
+                lista.append(float(input(f"Número {i+1}: ")))
+            calcular_media(lista)
+        elif op == "4":
+            break
+        else:
+            print("Opción inválida")
+
+def menu_nivel_3():
+    while True:
+        print("\n--- Nivel 3: Funciones con parámetros y retorno ---")
+        print("1. Invertir cadena")
+        print("2. Mayor de tres números")
+        print("3. Calcular área del cilindro")
+        print("4. Buscar palabra")
+        print("5. Volver al menú principal")
+        op = input("Selecciona una opción: ")
+        if op == "1":
+            cad = input("Cadena: ")
+            print("Cadena invertida:", invertir_cadena(cad))
+        elif op == "2":
+            a = float(input("Número 1: "))
+            b = float(input("Número 2: "))
+            c = float(input("Número 3: "))
+            print("El mayor es:", mayor_de_tres_numeros(a, b, c))
+        elif op == "3":
+            r = float(input("Radio: "))
+            h = float(input("Altura: "))
+            print("Área del cilindro:", calcular_area(r, h))
+        elif op == "4":
+            cad = input("Cadena: ")
+            pal = input("Palabra a buscar: ")
+            if buscar_palabra(cad, pal):
+                print("La palabra está en la cadena")
+            else:
+                print("La palabra no está en la cadena")
+        elif op == "5":
+            break
+        else:
+            print("Opción inválida")
+
+def menu_nivel_4():
+    while True:
+        print("\n--- Nivel 4: Funciones con múltiples parámetros y retorno ---")
+        print("1. Promedio")
+        print("2. Multiplicar lista")
+        print("3. Mayor de varios números")
+        print("4. Calcular mediana")
+        print("5. Contar ocurrencias")
+        print("6. Volver al menú principal")
+        op = input("Selecciona una opción: ")
+        if op == "1":
+            nums = input("Ingresa números separados por espacios: ")
+            lista = [float(x) for x in nums.split()]
+            print("Promedio:", promedio(*lista))
+        elif op == "2":
+            nums = input("Lista de números separados por espacios: ")
+            lista = [float(x) for x in nums.split()]
+            num = float(input("Número a multiplicar: "))
+            print("Resultado:", multiplicar_lista(lista, num))
+        elif op == "3":
+            nums = input("Ingresa números separados por espacios: ")
+            lista = [float(x) for x in nums.split()]
+            print("El mayor es:", mayor_de_varios_numeros(*lista))
+        elif op == "4":
+            nums = input("Ingresa números separados por espacios: ")
+            lista = [float(x) for x in nums.split()]
+            print("Mediana:", calcular_mediana(*lista))
+        elif op == "5":
+            cadena = input("Cadena: ")
+            palabra = input("Palabra a contar: ")
+            print("Ocurrencias:", contar_ocurrencias(cadena, palabra))
+        elif op == "6":
+            break
+        else:
+            print("Opción inválida")
+
+def menu_principal():
+    while True:
+        print("\n========== TALLER DE FUNCIONES EN PYTHON ==========")
+        print("1. Nivel 1: Funciones sin parámetros ni retorno")
+        print("2. Nivel 2: Funciones con parámetros sin retorno")
+        print("3. Nivel 3: Funciones con parámetros y retorno")
+        print("4. Nivel 4: Funciones con múltiples parámetros y retorno")
+        print("5. Salir")
+        opcion = input("Selecciona una opción: ")
+        if opcion == "1":
+            menu_nivel_1()
+        elif opcion == "2":
+            menu_nivel_2()
+        elif opcion == "3":
+            menu_nivel_3()
+        elif opcion == "4":
+            menu_nivel_4()
+        elif opcion == "5":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción inválida")
+
+menu_principal()
